@@ -23,5 +23,6 @@ webpack-dev-server.config.js
 # add to Dockerfile
 #npm install --save react-material-markdown-element
 npm install --save react-swipeable-views
-
-
+npm install --save-dev css-loader
+npm install --save-dev style-loader
+npm install --save-dev raw-loader
