@@ -1,0 +1,27 @@
+
+# run
+docker run -it --rm --volume /usr/local/app/agility/src/:/src --name=ag -p 3000 ag bash
+
+# no git
+docker run -it --rm --name=ag -p 3000:3000 mat/react-agile:0.01
+
+# open shell in order to use the neo4j cmds
+docker exec -it ag bash
+
+docker run -it --rm --volume /usr/local/app/agility/src/:/src --name=ag -p 3000 ag bash
+
+npm run browser:development
+
+cd docs
+npm —save install
+
+
+# important note: in docker change to 0.0.0.0
+webpack-dev-server.config.js
+    host: 'localhost', // Change to '0.0.0.0' for external facing serve
+
+# add to Dockerfile
+#npm install --save react-material-markdown-element
+npm install --save react-swipeable-views
+
+
