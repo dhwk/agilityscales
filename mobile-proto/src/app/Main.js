@@ -8,8 +8,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {deepOrange500} from 'material-ui/styles/colors';
 
-//import MarkdownElement from './components/MarkdownElement';
-//import startText from './startText.md';
+import MarkdownElement from './components/MarkdownElement';
+import startText from './startText.md';
 
 import FlatButton from 'material-ui/FlatButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
@@ -18,19 +18,18 @@ import SwipeableViews from 'react-swipeable-views';
 
 const styles = {
   topic: {
-    fontSize: 32,
+    fontSize: 'big',
     textAlign: 'center',
   },
   slide: {
-    textAlign: 'center',
     padding: 0,
   },
-  stage1: { backgroundColor: '#FF9800', margin: 0,},
-  stage2: { backgroundColor: '#FF80AB', margin: 0,},
-  stage3: { backgroundColor: '#9575CD', margin: 0,},
-  stage4: { backgroundColor: '#81C784', margin: 0,},
-  stage5: { backgroundColor: '#82B1FF', margin: 0,},
-  stage6: { backgroundColor: '#C51162', margin: 0,},
+  stage1: { backgroundColor: '#FF9800', margin: 0, textAlign: 'center',},
+  stage2: { backgroundColor: '#FF80AB', margin: 0,textAlign: 'center',},
+  stage3: { backgroundColor: '#9575CD', margin: 0,textAlign: 'center',},
+  stage4: { backgroundColor: '#81C784', margin: 0,textAlign: 'center',},
+  stage5: { backgroundColor: '#82B1FF', margin: 0,textAlign: 'center',},
+  stage6: { backgroundColor: '#C51162', margin: 0,textAlign: 'center',},
 };
 
 
@@ -100,29 +99,7 @@ class Main extends Component {
           >
               <div>
                   <h2 style={styles.stage1}>Start</h2>
-                {/* <MarkdownElement text={stylesText} /> */}
-                <div>
-                ## Start Improvement
-
-                This app is a prototype. We can improve many things. Do you want to build the real version?
-
-                ### So, what’s this all about?
-                - You want to scale agile but you don’t know how to proceed.
-                - You like some methods and frameworks but they don’t fit in your context.
-                - You want to change the organization but it’s hard enough to change your team.
-
-                ### Improve your team for this topic in just a few steps:
-                .	Start when your team is ready to explore this topic;
-                .	Learn about this topic with articles and examples;
-                .	Try practices that could help you achieve progress;
-                .	Check if one or more practices are working for you;
-                .	Scale between full control and self-organization;
-                .	Finish with recognition for you and your team.
-
-                To get started, move the topic card to the next column.
-
-                This app is a prototype. We can improve many things. Do you want to build the real version?
-                </div>
+                <MarkdownElement text={startText} />
               </div>
               <div>
                 <h2 style={styles.stage2}>Learn</h2>
