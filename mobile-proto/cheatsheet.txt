@@ -1,14 +1,13 @@
 
 # run
-docker run -it --rm --volume /usr/local/app/agility/src/:/src --name=ag -p 3000 ag bash
+docker run -it --rm --name=mobile -p 3000:3000 --volume /usr/local/app/agility/src/:/src mobile-proto bash
 
 # no git
-docker run -it --rm --name=ag -p 3000:3000 mat/react-agile:0.01
+docker run -it --rm --name=mobile -p 3000:3000 mobile-proto bash
+
 
 # open shell in order to use the neo4j cmds
-docker exec -it ag bash
-
-docker run -it --rm --volume /usr/local/app/agility/src/:/src --name=ag -p 3000 ag bash
+docker exec -it mobile bash
 
 npm run browser:development
 
@@ -26,3 +25,7 @@ npm install --save react-swipeable-views
 npm install --save-dev css-loader
 npm install --save-dev style-loader
 npm install --save-dev raw-loader
+
+
+# tutorial make docker run:
+https://www.youtube.com/watch?v=kQBGbmrdYO4

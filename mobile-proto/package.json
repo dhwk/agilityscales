@@ -1,14 +1,12 @@
 {
-  "name": "material-ui-example-webpack",
+  "name": "mobile-proto",
   "version": "0.16.4",
-  "description": "Sample project that uses Material-UI",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/callemall/material-ui.git"
-  },
+  "description": "Prototype that uses Material-UI",
   "scripts": {
-    "start": "webpack-dev-server --config webpack-dev-server.config.js --progress --inline --colors",
-    "build": "webpack --config webpack-production.config.js --progress --colors"
+    "dev": "webpack-dev-server --config webpack-dev-server.config.js --progress --inline --colors",
+    "build": "webpack --config webpack-production.config.js --progress --colors",
+    "native:development": "node_modules/react-native/packager/packager.sh --reset-cache",
+    "android:setup-port": "adb reverse tcp:8081 tcp:8081"
   },
   "private": true,
   "devDependencies": {
@@ -27,10 +25,13 @@
   },
   "dependencies": {
     "material-ui": "^0.16.4",
-    "react": "^15.4.1",
+    "node-static": "^0.7.9",
+    "react": "^15.5.4",
     "react-dom": "^15.4.1",
     "react-material-markdown-element": "^1.0.0",
+    "react-redux": "^5.0.4",
     "react-swipeable-views": "^0.11.2",
-    "react-tap-event-plugin": "^2.0.1"
+    "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.6.0"
   }
 }

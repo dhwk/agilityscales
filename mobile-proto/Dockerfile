@@ -1,5 +1,5 @@
-FROM node:latest 
-MAINTAINER Mat <mat@alabaster.de> 
+FROM node:latest
+MAINTAINER Mat <mat@alabaster.de>
 
 # Install missing tools
 RUN apt-get update && apt-get install -y \
@@ -10,13 +10,14 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /src
 WORKDIR /src
 
-# Install app dependencies
-COPY package.json /src
-RUN npm install
-
 # Bundle app source
-COPY . /src
+COPY package.json /src
+COPY build /src
+COPY server.js /src
+COPY webpack* /src/
+
+# Install modules
+RUN npm install
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
-
