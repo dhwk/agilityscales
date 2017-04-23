@@ -7,7 +7,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 import App from './App';
-import './index.css';
 
 // firebase
 var config = {
