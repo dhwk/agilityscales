@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
-import MultiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+//import MultiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+//import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import FlatButton from 'material-ui/FlatButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -52,13 +52,11 @@ class AppBarTop extends Component {
 
   render() {
     return (
-      <div className="App">
-        <MultiThemeProvider muiTheme={getMuiTheme()}>
+      <div>
           <AppBar
             title="Agility Scales"
             iconElementRight={<Login />}
           />
-        </MultiThemeProvider>
       </div>
     );
   }

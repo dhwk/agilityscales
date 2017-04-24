@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import MultiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import firebase from 'firebase';
 
 import AppBarTop from './components/AppBarTop';
+import WhatsUp from './components/WhatsUp';
+
 
 class App extends Component {
 
@@ -17,26 +21,29 @@ class App extends Component {
       speed: 25
     });
 
-    const dbJson = document.getElementById("db-json");
-    const dbRef = firebase.database().ref();
-    dbRef.on('value', snap => {
-      dbJson.innerText = JSON.stringify(snap.val(), null, 3);
-    });
-
-    const dbSpeedRef = dbRef.child('example/speed');
-    dbSpeedRef.on('value', snap => {
-      this.setState({speed: snap.val()});
-    });
+    // const dbJson = document.getElementById("db-json");
+    // const dbRef = firebase.database().ref();
+    // dbRef.on('value', snap => {
+    //   dbJson.innerText = JSON.stringify(snap.val(), null, 3);
+    // });
+    //
+    // const dbSpeedRef = dbRef.child('example/speed');
+    // dbSpeedRef.on('value', snap => {
+    //   this.setState({speed: snap.val()});
+    // });
 
 
   }
 
   render() {
     return (
-      <div className="App">
-        <AppBarTop />
-        <h2>{this.state.speed}</h2>
-        <pre id="db-json"></pre>
+      <div>
+        <MultiThemeProvider>
+          <div>
+            <AppBarTop />
+            <WhatsUp />
+          </div>
+        </MultiThemeProvider>
       </div>
     );
   }
