@@ -4,14 +4,9 @@ import Rebase from 're-base';
 import AppBarTop from './components/AppBarTop';
 import WhatsUp from './components/WhatsUp';
 
-var base = Rebase.createClass({
-  apiKey: "AIzaSyCpEKCjdmAYSvH6C1HbJCnkSBde5u5CYf0",
-  authDomain: "proto-c8716.firebaseapp.com",
-  databaseURL: "https://proto-c8716.firebaseio.com",
-  projectId: "proto-c8716",
-  storageBucket: "proto-c8716.appspot.com",
-  messagingSenderId: "561917541704"
-});
+import credentials from './credentials.js';
+
+var base = Rebase.createClass(credentials);
 
 class App extends Component {
   constructor(props) {
