@@ -12,7 +12,7 @@ WORKDIR /src
 
 # Bundle app source
 COPY package.json /src
-COPY build /src
+COPY build/* /src/build/
 COPY server.js /src
 COPY webpack* /src/
 
