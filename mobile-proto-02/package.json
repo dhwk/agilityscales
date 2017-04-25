@@ -1,6 +1,6 @@
 {
-  "name": "react-starter",
-  "version": "0.1.0",
+  "name": "mobile-proto",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "firebase": "^3.8.0",
