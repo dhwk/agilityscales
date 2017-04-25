@@ -12,7 +12,7 @@ class AddNote extends Component{
   }
   render(){
     return (
-      <div style={{padding:'20px', fontSize:'large', display:'block', textAlign:'center'}}>
+      <div style={{padding:'20px', fontSize:'large', textAlign:'center'}}>
         <span>What's up?</span>
         <br />
         <TextField
@@ -23,7 +23,7 @@ class AddNote extends Component{
           rows={3}
           rowsMax={20}
         />
-
+        <br />
         <RaisedButton
           label="Send"
           id="send"

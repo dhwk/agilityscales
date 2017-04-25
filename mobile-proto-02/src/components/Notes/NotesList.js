@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import { List, ListItem } from 'material-ui/List';
 
 class NotesList extends Component{
   render(){
     var notes = this.props.notes.map((note, index) => {
-      return <li key={index}> {note} </li>
+      return <ListItem key={index}> {note} </ListItem>
     });
     return (
-      <ul >
+      <List style={{padding:'20px', fontSize:'large', textAlign:'center'}}>
         {notes}
-      </ul>
+      </List>
     )
   }
 };
