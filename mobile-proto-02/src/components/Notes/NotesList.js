@@ -5,9 +5,12 @@ class NotesList extends Component{
   render(){
     var mynotes = [];
     for (var k in this.props.notes) {
-      mynotes.push(<ListItem key={k}> {this.props.notes[k].message}</ListItem>)
+      mynotes.unshift(<ListItem key={k}>
+        {this.props.notes[k].message}<br />
+        <span style={{fontSize:'small', fontColor:'grey'}}>{new Date(this.props.notes[k].timestamp).toString()}</span>
+      </ListItem>)
     }
-    
+
     return (
       <List style={{padding:'20px', fontSize:'large', textAlign:'center'}}>
         {mynotes}

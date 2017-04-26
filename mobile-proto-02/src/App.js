@@ -38,7 +38,11 @@ class App extends Component {
     this.ref = base.syncState(`whatsup`,
     {
       context: this,
-      state: 'notes'
+      state: 'notes',
+      queries: {
+        // orderByChild:'timestamp',
+        limitToLast: 20
+      }
     });
   }
 
@@ -61,7 +65,8 @@ class App extends Component {
       message: newNote,
       uid: this.state.user.uid || "no uid",
       displayName: this.state.user.displayName || "Guest",
-      isAnonymous: this.state.user.isAnonymous
+      isAnonymous: this.state.user.isAnonymous,
+      timestamp: base.database.ServerValue.TIMESTAMP
     }
     var newRef = base.push(
       'whatsup', { data: newData }
