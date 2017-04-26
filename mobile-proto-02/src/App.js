@@ -34,15 +34,14 @@ class App extends Component {
   }
 
   init(){
-
     // this.ref = base.syncState(`whatsup/${this.props}`,
     this.ref = base.syncState(`whatsup`,
     {
       context: this,
       state: 'notes'
     });
-    console.log(this.ref);
   }
+
   componentDidMount(){
     this.init();
     this.setLoginUserState();
@@ -67,8 +66,8 @@ class App extends Component {
     var newRef = base.push(
       'whatsup', { data: newData }
     );
+    // TODO: warning  Do not mutate state directly. Use setState()  react/no-direct-mutation-state
     this.setState(this.state.notes[newRef.key] = newData);
-    console.log(this.state);
   }
 
   render() {
