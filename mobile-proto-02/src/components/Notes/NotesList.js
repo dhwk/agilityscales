@@ -3,12 +3,14 @@ import { List, ListItem } from 'material-ui/List';
 
 class NotesList extends Component{
   render(){
-    var notes = this.props.notes.map((note, index) => {
-      return <ListItem key={index}> {note} </ListItem>
-    });
+    var mynotes = [];
+    for (var k in this.props.notes) {
+      mynotes.push(<ListItem key={k}> {this.props.notes[k].message}</ListItem>)
+    }
+    
     return (
       <List style={{padding:'20px', fontSize:'large', textAlign:'center'}}>
-        {notes}
+        {mynotes}
       </List>
     )
   }
