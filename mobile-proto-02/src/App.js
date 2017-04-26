@@ -6,29 +6,46 @@ import WhatsUp from './components/WhatsUp';
 
 import credentials from './credentials.js';
 
-var base = Rebase.createClass(credentials);
+const base = Rebase.createClass(credentials);
+
+let loginPromise = base.auth().signInAnonymously()
+
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      notes: []
+      notes: {},
+      user: {}
     };
   };
 
-  init(){
-    // this.ref = base.syncState(`whatsup/${this.props}`,
-    this.ref = base.syncState(`notes`,
-    {
-      context: this,
-      asArray: true,
-      state: 'notes'
-    });
+  setLoginUserState() {
+    loginPromise.then( user => {
+      this.setState({
+        user: {
+          displayName: user.displayName,
+          isAnonymous: user.isAnonymous,
+          uid: user.uid
+        }
+      });
+    }).catch(error => console.error(error));
   }
 
+  init(){
 
+    // this.ref = base.syncState(`whatsup/${this.props}`,
+    this.ref = base.syncState(`whatsup`,
+    {
+      context: this,
+      state: 'notes'
+    });
+    console.log(this.ref);
+  }
   componentDidMount(){
     this.init();
+    this.setLoginUserState();
   }
   componentWillUnmount(){
     base.removeBinding(this.ref);
@@ -37,10 +54,21 @@ class App extends Component {
     base.removeBinding(this.ref);
     this.init();
   }
+
+
   handleAddNote(newNote){
-    this.setState({
-      notes: this.state.notes.concat([newNote])
-    })
+    var newData =
+    {
+      message: newNote,
+      uid: this.state.user.uid || "no uid",
+      displayName: this.state.user.displayName || "Guest",
+      isAnonymous: this.state.user.isAnonymous
+    }
+    var newRef = base.push(
+      'whatsup', { data: newData }
+    );
+    this.setState(this.state.notes[newRef.key] = newData);
+    console.log(this.state);
   }
 
   render() {
