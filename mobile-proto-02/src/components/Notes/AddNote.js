@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 class AddNote extends Component{
   handleSubmit(){
-    //var newNote = ReactDOM.findDOMNode(this.refs.note).value;
     var newNote = document.getElementById("txtfd").value;
-    ReactDOM.findDOMNode(this.refs.note).value = '';
+    document.getElementById("txtfd").value = "";
     this.props.addNote(newNote);
   }
   render(){
@@ -17,16 +15,17 @@ class AddNote extends Component{
         <br />
         <TextField
           id="txtfd"
-          ref="note"
           placeholder="Today I brought my team ice cream."
           multiLine={true}
           rows={3}
           rowsMax={20}
+          // eslint-disable-next-line
+          onKeyPress={(e) => {(e.key === 'Enter' ?
+           this.handleSubmit() : null)}}
         />
         <br />
         <RaisedButton
           label="Send"
-          id="send"
           onClick={this.handleSubmit.bind(this)}
           style={{margin:12}}
         />
