@@ -18,3 +18,4 @@ yarn-error.log*
 
 functions
 src/credentials.js
+src/credentials-privat.js
