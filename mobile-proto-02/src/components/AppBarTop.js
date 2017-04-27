@@ -6,6 +6,8 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Drawer from 'material-ui/Drawer';
+import { Link } from 'react-router-dom';
+
 
 class Login extends Component {
   static muiName = 'FlatButton';
@@ -35,8 +37,6 @@ const Logged = (props) => (
 Logged.muiName = 'IconMenu';
 
 
-
-
 class AppBarTop extends Component {
 
   constructor() {
@@ -47,13 +47,9 @@ class AppBarTop extends Component {
     };
   }
 
+
   handleToggel = () => this.setState({open: !this.state.open});
 
-  componentDidMount(){
-    this.setState({
-    });
-
-  }
 
   render() {
     return (
@@ -68,8 +64,14 @@ class AppBarTop extends Component {
             docked={false}
             onRequestChange={(open) => this.setState({open})}
             >
-            <MenuItem>What's up?</MenuItem>
-            <MenuItem>Event Stream</MenuItem>
+            <MenuItem
+              containerElement={<Link to="/whatsup"/>}
+              primaryText="What's up?"
+            />
+            <MenuItem
+              containerElement={<Link to="/stream"/>}
+              primaryText="Steam"
+            />
           </Drawer>
       </div>
     );

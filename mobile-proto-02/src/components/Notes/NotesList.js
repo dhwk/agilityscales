@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { List, ListItem } from 'material-ui/List';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class NotesList extends Component{
+
   render(){
     var mynotes = [];
     for (var k in this.props.notes) {
@@ -12,9 +14,11 @@ class NotesList extends Component{
     }
 
     return (
-      <List style={{padding:'20px', fontSize:'large', textAlign:'center'}}>
-        {mynotes}
-      </List>
+      <div>
+        <List style={{padding:'20px', fontSize:'large', textAlign:'center'}}>
+          {mynotes}
+        </List>
+      </div>
     )
   }
 };
