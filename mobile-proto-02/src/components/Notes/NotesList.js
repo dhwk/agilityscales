@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { List, ListItem } from 'material-ui/List';
-import CircularProgress from 'material-ui/CircularProgress';
 
 class NotesList extends Component{
 
