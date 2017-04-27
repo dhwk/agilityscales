@@ -5,6 +5,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import Drawer from 'material-ui/Drawer';
 
 class Login extends Component {
   static muiName = 'FlatButton';
@@ -33,14 +34,20 @@ const Logged = (props) => (
 
 Logged.muiName = 'IconMenu';
 
+
+
+
 class AppBarTop extends Component {
 
   constructor() {
     super();
     this.state = {
-      loged: false
+      loged: false,
+      open: false
     };
   }
+
+  handleToggel = () => this.setState({open: !this.state.open});
 
   componentDidMount(){
     this.setState({
@@ -53,8 +60,17 @@ class AppBarTop extends Component {
       <div>
           <AppBar
             title="Agility Scales"
+            onTouchTap={this.handleToggel}
             iconElementRight={<Login />}
           />
+          <Drawer
+            open={this.state.open}
+            docked={false}
+            onRequestChange={(open) => this.setState({open})}
+            >
+            <MenuItem>What's up?</MenuItem>
+            <MenuItem>Event Stream</MenuItem>
+          </Drawer>
       </div>
     );
   }

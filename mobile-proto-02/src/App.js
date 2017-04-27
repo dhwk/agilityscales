@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import MultiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Rebase from 're-base';
 import AppBarTop from './components/AppBarTop';
-import WhatsUp from './components/WhatsUp';
+import AddNote from './components/Notes/AddNote';
+import NotesList from './components/Notes/NotesList';
 
 import credentials from './credentials.js';
 
@@ -60,6 +61,8 @@ class App extends Component {
 
 
   handleAddNote(newNote){
+    //e.preventDefault(); //how to use?
+
     var newData =
     {
       message: newNote,
@@ -81,10 +84,12 @@ class App extends Component {
         <MultiThemeProvider>
           <div>
             <AppBarTop />
-            <WhatsUp
+            <AddNote addNote={this.handleAddNote.bind(this)} />
+            <NotesList notes={this.state.notes} />
+            {/* <WhatsUp
               notes={this.state.notes}
               addNote={this.handleAddNote.bind(this)}
-            />
+            /> */}
           </div>
         </MultiThemeProvider>
       </div>
