@@ -1,100 +1,40 @@
 import React, { Component } from 'react';
-import MultiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Rebase from 're-base';
-import AppBarTop from './components/AppBarTop';
-import AddNote from './components/Notes/AddNote';
-import NotesList from './components/Notes/NotesList';
+import WhatsUp from './components/WhatsUp'
+import { HashRouter, Route, Link, Redirect, Switch } from 'react-router-dom';
 
-import credentials from './credentials.js';
-
-const base = Rebase.createClass(credentials);
-
-let loginPromise = base.auth().signInAnonymously()
-
+const Home = () => <h1>Hello Home!</h1>
+//const App = () => <h1>What's Up?</h1>
 
 class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      notes: {},
-      user: {}
-    };
-  };
-
-  setLoginUserState() {
-    loginPromise.then( user => {
-      this.setState({
-        user: {
-          displayName: user.displayName,
-          isAnonymous: user.isAnonymous,
-          uid: user.uid
-        }
-      });
-    }).catch(error => console.error(error));
-  }
-
-  init(){
-    // this.ref = base.syncState(`whatsup/${this.props}`,
-    this.ref = base.syncState(`whatsup`,
-    {
-      context: this,
-      state: 'notes',
-      queries: {
-        // orderByChild:'timestamp',
-        limitToLast: 20
-      }
-    });
-  }
-
-  componentDidMount(){
-    this.init();
-    this.setLoginUserState();
-  }
-  componentWillUnmount(){
-    base.removeBinding(this.ref);
-  }
-  componentWillReceiveProps(){
-    base.removeBinding(this.ref);
-    this.init();
-  }
-
-
-  handleAddNote(newNote){
-    //e.preventDefault(); //how to use?
-
-    var newData =
-    {
-      message: newNote,
-      uid: this.state.user.uid || "no uid",
-      displayName: this.state.user.displayName || "Guest",
-      isAnonymous: this.state.user.isAnonymous,
-      timestamp: base.database.ServerValue.TIMESTAMP
-    }
-    var newRef = base.push(
-      'whatsup', { data: newData }
-    );
-    // TODO: warning  Do not mutate state directly. Use setState()  react/no-direct-mutation-state
-    this.setState(this.state.notes[newRef.key] = newData);
-  }
-
   render() {
     return (
-      <div>
-        <MultiThemeProvider>
-          <div>
-            <AppBarTop />
-            <AddNote addNote={this.handleAddNote.bind(this)} />
-            <NotesList notes={this.state.notes} />
-            {/* <WhatsUp
-              notes={this.state.notes}
-              addNote={this.handleAddNote.bind(this)}
-            /> */}
-          </div>
-        </MultiThemeProvider>
-      </div>
+      <HashRouter>
+      <Switch>
+          <Route exact path='/'>
+            <Redirect to='/whatsup' />
+          </Route>
+          <Route path='/whatsup' component={WhatsUp} />
+          <Route component={WhatsUp} />
+      </Switch>
+    </HashRouter>
     );
   }
 }
 
-export default App;
+// const Nav = () => (
+//     <div>
+//     <Link to='/'>Home</Link>
+//     <Link to="/whatsup">What's up?</Link>
+//     <Link to="/stream">Stream</Link>
+//     <Link to="/chat">Chat</Link>
+//   </div>
+// );
+// const Container = (props) => {
+//   <div>
+//     <Nav />
+//     {props.children}
+//   </div>
+// }
+
+
+export default App
