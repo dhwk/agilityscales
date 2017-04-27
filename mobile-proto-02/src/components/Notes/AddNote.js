@@ -3,11 +3,19 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 class AddNote extends Component{
+
+  cleanText(text){
+    return text.replace(/^[\s\n]*|[\s\n]*$/g, '');
+  }
+
   handleSubmit(){
     var newNote = document.getElementById("txtfd").value;
+    newNote = this.cleanText(newNote);
     document.getElementById("txtfd").value = "";
+    if (!newNote) {return};
     this.props.addNote(newNote);
   }
+
   render(){
     return (
       <div style={{padding:'20px', fontSize:'large', textAlign:'center'}}>
