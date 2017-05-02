@@ -77,7 +77,13 @@ class App extends Component {
       'whatsup', { data: newData }
     );
     // TODO: warning  Do not mutate state directly. Use setState()  react/no-direct-mutation-state
-    this.setState(this.state.notes[newRef.key] = newData);
+    // this.setState(this.state.notes[newRef.key] = newData);
+    this.setState({
+      notes: {
+        ...this.state.notes,
+        [newRef.key]: newData,
+      }
+    })
   }
 
   render() {
