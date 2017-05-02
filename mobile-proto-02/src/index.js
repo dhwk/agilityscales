@@ -7,7 +7,13 @@ import './index.css'
 
 injectTapEventPlugin();
 
-ReactDOM.render(
+const start = () => ReactDOM.render(
   <App />,
   document.getElementById('root')
-);
+)
+
+if (window.cordova) {
+  document.addEventListener('deviceready', start, false)
+} else {
+  start()
+}
