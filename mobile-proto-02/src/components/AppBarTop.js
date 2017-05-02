@@ -8,6 +8,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Drawer from 'material-ui/Drawer';
 import { Link } from 'react-router-dom';
 
+import './AppBarTop.css'
 
 class Login extends Component {
   static muiName = 'FlatButton';
@@ -47,17 +48,23 @@ class AppBarTop extends Component {
     };
   }
 
+  // handleToggel = () => this.setState({open: !this.state.open});
+  handleMenuButtonClick() {
+    this.setState({open: !this.state.open})
+  }
 
-  handleToggel = () => this.setState({open: !this.state.open});
-
+  handleLoginButtonClick() {
+  }
 
   render() {
     return (
-      <div>
+      <div className="AppBarTop">
           <AppBar
             title="Agility Scales"
-            onTouchTap={this.handleToggel}
-            iconElementRight={<Login />}
+            onLeftIconButtonTouchTap={e => this.handleMenuButtonClick(e)}
+            iconElementRight={
+              <Login onTouchTap={e => this.handleLoginButtonClick(e)} />
+            }
           />
           <Drawer
             open={this.state.open}
